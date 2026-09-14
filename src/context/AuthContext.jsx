@@ -101,7 +101,7 @@ export function AuthProvider({ children }) {
 
   const resetPassword = async (email) => {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/perfil`,
+      redirectTo: `${window.location.origin}/restablecer-clave`,
     });
     if (error) throw error;
   };

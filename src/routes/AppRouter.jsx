@@ -8,6 +8,7 @@ import Quote from '../pages/Quote';
 import Auth from '../pages/Auth';
 import Register from '../pages/Register';
 import PasswordReset from '../pages/PasswordReset';
+import UpdatePassword from '../pages/UpdatePassword';
 import AdminDashboard from '../pages/AdminDashboard';
 import AdminAnalytics from '../pages/AdminAnalytics';
 import AdminProducts from '../pages/AdminProducts';
@@ -49,6 +50,7 @@ export default function AppRouter() {
           <Route path="/login" element={<Auth />} />
           <Route path="/register" element={<Register />} />
           <Route path="/recuperar-clave" element={<PasswordReset />} />
+          <Route path="/restablecer-clave" element={<UpdatePassword />} />
 
           {/* Rutas privadas de Cliente (Requieren Login) */}
           <Route element={<ProtectedUserRoute />}>
