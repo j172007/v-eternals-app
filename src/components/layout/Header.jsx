@@ -118,6 +118,13 @@ export default function Header() {
               Sobre Nosotros
             </NavLink>
           </li>
+          {user && (
+            <li className={styles.mobileLogoutItem}>
+              <button type="button" onClick={handleLogout} className={styles.mobileLogoutBtn}>
+                Cerrar Sesión
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
 

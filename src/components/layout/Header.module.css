@@ -243,6 +243,11 @@
   background-color: #fff5f5;
 }
 
+.mobileLogoutItem,
+.mobileLogoutBtn {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .header {
     height: auto;
@@ -317,6 +322,31 @@
 
   .navLinks li {
     width: 100%;
+  }
+
+  .mobileLogoutItem {
+    display: block;
+    border-top: 1px solid rgba(224, 224, 224, 0.8);
+    margin-top: 0.35rem;
+    padding-top: 0.35rem;
+  }
+
+  .mobileLogoutBtn {
+    display: block;
+    width: 100%;
+    padding: 0.8rem 0.25rem;
+    border: 0;
+    background: transparent;
+    color: #d9534f;
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .mobileLogoutBtn:hover {
+    background-color: #fff5f5;
   }
 
   .navLinks .logoContainer {

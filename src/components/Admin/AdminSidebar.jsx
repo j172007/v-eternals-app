@@ -76,6 +76,11 @@ export default function AdminSidebar() {
           <span className={styles.icon}>🌐</span>
           <span>Ver Tienda Pública</span>
         </Link>
+
+        <button onClick={handleLogout} className={`${styles.navItem} ${styles.mobileLogoutBtn}`}>
+          <span className={styles.icon}>🚪</span>
+          <span>Cerrar Sesión</span>
+        </button>
       </nav>
 
       <div className={styles.footer}>

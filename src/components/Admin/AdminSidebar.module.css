@@ -107,6 +107,15 @@
   background-color: #fde8e8;
 }
 
+.mobileLogoutBtn {
+  display: none;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
 @media (max-width: 800px) {
   .sidebar {
     position: relative;
@@ -155,11 +164,23 @@
     padding: 11px 12px;
   }
 
+  .mobileLogoutBtn {
+    display: flex;
+    color: #d9534f;
+    font: inherit;
+  }
+
+  .mobileLogoutBtn:hover {
+    background-color: #fde8e8;
+  }
+
   .menuButton {
     display: flex;
+    position: absolute;
+    right: 16px;
     width: 42px;
     height: 42px;
-    margin-left: 18px;
+    margin-left: 0;
     padding: 8px;
     flex-direction: column;
     justify-content: center;
@@ -179,14 +200,11 @@
   }
 
   .footer {
-    margin-left: auto;
-    padding: 10px 16px;
-    border-top: 0;
+    display: none;
   }
 
   .logoutBtn {
-    width: auto;
-    padding: 10px 12px;
+    width: 100%;
   }
 }
 
@@ -198,6 +216,10 @@
   .logoSection {
     padding: 10px 12px;
     padding-right: 92px;
+  }
+
+  .menuButton {
+    right: 12px;
   }
 
   .logo {
@@ -227,28 +249,6 @@
     display: none;
   }
 
-  .footer {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    padding: 0;
-  }
-
-  .logoutBtn {
-    width: 38px;
-    height: 38px;
-    margin: 0;
-    padding: 6px 12px;
-    font-size: 0.72rem;
-  }
-
-  .logoutBtn .icon {
-    display: inline;
-  }
-
-  .logoutBtn span:last-child {
-    display: none;
-  }
 }
 
 /* En escritorio se conserva el sidebar original */
