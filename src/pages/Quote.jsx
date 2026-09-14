@@ -59,6 +59,7 @@ export default function Quote() {
   };
 
   const isDetailProduct = (item) => item.category === 'Detalles';
+  const isDeliveryAddon = (addon) => addon.name.startsWith('Domicilio Zona');
 
   const getVariantsForProduct = (item) => {
     if (item.variants && item.variants.length > 0) {
@@ -94,6 +95,10 @@ export default function Quote() {
   };
 
   const calculateGrandTotal = () => calculateQuoteTotal(quoteItems);
+
+  const deliveryItemId = quoteItems.find((item) =>
+    (item.addons || []).some(isDeliveryAddon),
+  )?.id || quoteItems[0]?.id;
 
   const handleVariantChange = (item, selectedLabel) => {
     const variants = getVariantsForProduct(item);
@@ -209,7 +214,9 @@ export default function Quote() {
           : isNaturalProduct(item) ? 'Natural' : 'Eterna';
 
         message += `*${index + 1}. ${item.name} (${tipoProducto}) (x${item.quantity})* ${dizzyDashes}\n`;
-        message += `${cherryBlossom} Tamaño/Cantidad: ${item.size || 'No seleccionado'}\n`;
+        if (!isDetailProduct(item)) {
+          message += `${cherryBlossom} Tamaño/Cantidad: ${item.size || 'No seleccionado'}\n`;
+        }
         if (!isDetailProduct(item)) {
           message += `${cherryBlossom} Tonos/Color: ${colorDisplay || 'No seleccionado'}\n`;
         }
@@ -268,15 +275,15 @@ export default function Quote() {
             const currentVariants = getVariantsForProduct(item);
             const selectedVariant = currentVariants.find(v => v.label === item.size);
             const maxTonosAllowed = selectedVariant?.maxTonos || null;
-            const availableAddons = getAvailableAddons(item);
-            const rawColors = isDetail
-              ? ['No aplica']
-              : isNatural ? COLOR_OPTIONS_NATURALES : COLOR_OPTIONS_ETERNAS;
-            const availableColors = isDetail || maxTonosAllowed === 1
+            const availableAddons = getAvailableAddons(item).filter(
+              (addon) => !isDeliveryAddon(addon) || item.id === deliveryItemId,
+            );
+            const rawColors = isNatural ? COLOR_OPTIONS_NATURALES : COLOR_OPTIONS_ETERNAS;
+            const availableColors = maxTonosAllowed === 1
               ? rawColors
               : [...rawColors, 'Personalizado / Varios tonos'];
 
-            const isCustomColor = !isDetail && item.color === 'Personalizado / Varios tonos';
+            const isCustomColor = item.color === 'Personalizado / Varios tonos';
             const categoryLabel = PRODUCT_CATEGORIES.find((category) => category.value === item.category)?.label
               || (isNatural ? 'Rosas Naturales' : 'Rosas Eternas');
 
@@ -295,23 +302,25 @@ export default function Quote() {
                 </div>
 
                 <div className={styles.optionsGrid}>
-                  <div className={styles.optionGroup}>
-                    <label>{isDetail ? 'Presentación' : 'Cantidad de Rosas / Tamaño'}</label>
-                    <select 
-                      value={item.size || ''} 
-                      onChange={(e) => handleVariantChange(item, e.target.value)}
-                    >
-                      <option value="" disabled>Selecciona el tamaño</option>
-                      {currentVariants.map((v) => (
-                        <option key={v.label} value={v.label}>
-                          {v.label} {v.price > 0 ? `(${formatCurrency(v.price)})` : ''}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  {!isDetail && (
+                    <div className={styles.optionGroup}>
+                      <label>Cantidad de Rosas / Tamaño</label>
+                      <select 
+                        value={item.size || ''} 
+                        onChange={(e) => handleVariantChange(item, e.target.value)}
+                      >
+                        <option value="" disabled>Selecciona el tamaño</option>
+                        {currentVariants.map((v) => (
+                          <option key={v.label} value={v.label}>
+                            {v.label} {v.price > 0 ? `(${formatCurrency(v.price)})` : ''}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
 
                   <div className={styles.optionGroup}>
-                    <label>{isDetail ? 'Personalización' : 'Tonos / Color'}</label>
+                    <label>Tonos / Color</label>
                     <select 
                       value={item.color || ''} 
                       onChange={(e) => updateItem(item.id, 'color', e.target.value)}
@@ -411,15 +420,23 @@ export default function Quote() {
                 value={customerData.occasion} 
                 onChange={(e) => setCustomerData({...customerData, occasion: e.target.value})} 
               />
-              <input
-                type="date"
-                min={getMinimumDeliveryDate()}
-                required
-                className={styles.invoiceInput}
-                value={customerData.deliveryDate}
-                onChange={(e) => setCustomerData({...customerData, deliveryDate: e.target.value})}
-                aria-label="Fecha deseada de entrega"
-              />
+              <div className={styles.dateInputWrapper}>
+                <input
+                  type="date"
+                  min={getMinimumDeliveryDate()}
+                  required
+                  placeholder="Fecha deseada"
+                  className={styles.invoiceInput}
+                  value={customerData.deliveryDate}
+                  onChange={(e) => setCustomerData({...customerData, deliveryDate: e.target.value})}
+                  aria-label="Fecha deseada de entrega"
+                />
+                {!customerData.deliveryDate && (
+                  <span className={styles.datePlaceholder} aria-hidden="true">
+                    Fecha deseada
+                  </span>
+                )}
+              </div>
               <textarea 
                 placeholder="Notas adicionales..." 
                 className={styles.invoiceInput} 
@@ -434,7 +451,7 @@ export default function Quote() {
                   <div className={styles.invoiceItemInfo}>
                     <strong>{item.quantity}x {item.name}</strong>
                     <span>
-                      {item.size || 'Sin tamaño'} | {item.color === 'Personalizado / Varios tonos' && item.customColors?.length 
+                      {!isDetailProduct(item) && `${item.size || 'Sin tamaño'} | `}{item.color === 'Personalizado / Varios tonos' && item.customColors?.length 
                         ? item.customColors.join(', ') 
                         : (item.color || 'Sin color')}
                     </span>

@@ -50,16 +50,35 @@ export function QuoteProvider({ children }) {
   };
 
   const toggleAddon = (itemId, addon) => {
-    setQuoteItems((prev) =>
-      prev.map((item) => {
+    const isDeliveryAddon = addon.name.startsWith('Domicilio Zona');
+
+    setQuoteItems((prev) => {
+      const selectedItem = prev.find((item) => item.id === itemId);
+      const alreadySelected = selectedItem?.addons.some((itemAddon) => itemAddon.name === addon.name);
+
+      return prev.map((item) => {
+        const addonsWithoutDelivery = item.addons.filter(
+          (itemAddon) => !itemAddon.name.startsWith('Domicilio Zona'),
+        );
+
+        if (isDeliveryAddon) {
+          const shouldAddDelivery = item.id === itemId && !alreadySelected;
+          return {
+            ...item,
+            addons: shouldAddDelivery
+              ? [...addonsWithoutDelivery, addon]
+              : addonsWithoutDelivery,
+          };
+        }
+
         if (item.id !== itemId) return item;
-        const exists = item.addons.some((a) => a.name === addon.name);
+        const exists = item.addons.some((itemAddon) => itemAddon.name === addon.name);
         const newAddons = exists
-          ? item.addons.filter((a) => a.name !== addon.name)
+          ? item.addons.filter((itemAddon) => itemAddon.name !== addon.name)
           : [...item.addons, addon];
         return { ...item, addons: newAddons };
-      })
-    );
+      });
+    });
   };
 
   const clearQuote = () => {
