@@ -1,0 +1,129 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(201, 184, 150, 0.2);
+  overflow: visible !important; /* Permite que el badge sobresalga */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(44, 62, 45, 0.08);
+}
+
+.imageContainer {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  position: relative;
+  overflow: hidden; /* Recorta la imagen para respetar las esquinas redondeadas */
+  border-radius: 8px 8px 0 0;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.infoBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1.2rem;
+  background-color: var(--color-card-bg);
+  flex-grow: 1;
+  border-radius: 0 0 8px 8px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.name {
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+  font-weight: 600;
+  margin: 0;
+}
+
+.shortDescription {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.price {
+  font-size: 1.2rem;
+  color: var(--color-accent-strong);
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.cartButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.cartButton:hover {
+  background-color: var(--color-primary);
+}
+
+.cartIcon {
+  width: 20px;
+  fill: var(--color-text-main);
+  transition: fill 0.3s ease;
+}
+
+.cartButton:hover .cartIcon {
+  fill: #FFFFFF;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: -8px;
+  right: -25px;
+  z-index: 10;
+  transform: rotate(30deg);
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.badgeEterna {
+  background-color: rgba(252, 228, 236, 0.95);
+  color: #c2185b;
+  border: 1px solid rgba(194, 24, 91, 0.2);
+}
+
+.badgeNatural {
+  background-color: rgba(232, 245, 233, 0.95);
+  color: #2e7d32;
+  border: 1px solid rgba(46, 125, 50, 0.2);
+}
+
+.badgeDetails {
+  background-color: rgba(255, 243, 224, 0.95);
+  color: #a15c00;
+  border: 1px solid rgba(161, 92, 0, 0.2);
+}

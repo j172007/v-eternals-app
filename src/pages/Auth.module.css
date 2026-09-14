@@ -1,0 +1,137 @@
+.authPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: calc(100vh - 17vh);
+}
+
+.authCard {
+  background-color: #ffffff;
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 12px;
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.preTitle {
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--color-secondary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+}
+
+.errorBox {
+  background-color: #fde8e8;
+  color: #c53030;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.successBox {
+  background-color: #e7f6ed;
+  color: #216e3a;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: left;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldGroup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.fieldGroup input {
+  padding: 12px;
+  border: 1px solid var(--color-card-bg);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: var(--color-bg);
+}
+
+.fieldGroup input:focus {
+  border-color: var(--color-accent-gold);
+}
+
+.submitBtn {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: var(--color-text-main);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.submitBtn:hover {
+  opacity: 0.9;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.toggleBox {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: var(--color-accent-strong);
+  font-weight: 700;
+  margin-left: 6px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media (max-width: 520px) {
+  .authPage {
+    padding: 32px 12px;
+    align-items: flex-start;
+  }
+
+  .authCard {
+    padding: 28px 18px;
+  }
+
+  .title {
+    font-size: 1.55rem;
+  }
+}
+

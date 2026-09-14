@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  /* Paleta Elegante - V_Eternals */
+  --color-bg: #F8F1E9;             /* Marfil cálido */
+  --color-primary: #C9A9A6;        /* Rosa empolvado */
+  --color-text-main: #2C3E2D;      /* Verde bosque profundo */
+  --color-accent-gold: #C9B896;    /* Champán dorado */
+  --color-secondary: #8A9A7B;      /* Verde salvia apagado */
+  --color-card-bg: #E8D5D0;        /* Blush suave */
+  --color-accent-strong: #5C2E2E;  /* Borgoña profundo */
+  --color-text-muted: #3C3C3C;     /* Gris cálido oscuro */
+
+  /* Tipografía Minimalista Premium */
+  --font-main: 'Jost', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden; /* Evita scroll horizontal a nivel de página sin romper sticky */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aplicamos la misma fuente a los títulos, pero con un peso un poco más marcado */
+h1, h2, h3, h4, h5, h6, .heading, .title {
+  font-family: var(--font-main);
+  font-weight: 600; 
+  letter-spacing: 0.5px; /* Un ligero espaciado añade mucha elegancia en Jost */
+}
+
+/* Desbloquea el contenedor raíz de React para permitir el comportamiento sticky */
+#root {
+  min-height: 100vh;
+  height: auto !important;
+  overflow: visible !important;
+}
+
+html, body {
+  overflow-x: hidden;
+  height: auto !important;
+}
+
+button,
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}

@@ -1,0 +1,133 @@
+.section {
+  padding: 5rem 5%;
+  background-color: var(--color-bg); /* Marfil cálido */
+  text-align: center;
+}
+
+.header {
+  margin-bottom: 3.5rem;
+}
+
+.subtitle {
+  color: var(--color-primary); /* Rosa empolvado */
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.description strong {
+  color: var(--color-text-main);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(201, 169, 166, 0.15); /* Borde sutil basado en el primary */
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.iconCircle {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1.5rem auto;
+  background-color: rgba(201, 169, 166, 0.1); /* Fondo rosado muy transparente */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircle svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-primary); /* Rosa empolvado */
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.stepNumber {
+  background-color: var(--color-text-main); /* Verde bosque para contraste fuerte */
+  color: #FFFFFF;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.stepTitle {
+  color: var(--color-text-main);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.stepDescription {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding: 3.5rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+

@@ -1,0 +1,381 @@
+.dashboardPage {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.preTitle {
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  color: var(--color-secondary);
+  font-weight: 700;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 2rem;
+  margin-top: 5px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 12px;
+  padding: 30px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.card:hover:not(.disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 8px;
+  color: var(--color-text-main);
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dashboardContainer {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 1.8rem;
+  margin: 0 0 6px 0;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.statsCard {
+  background: #ffffff;
+  padding: 16px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--color-accent-gold);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statsCard span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  font-weight: 700;
+}
+
+.statsCard strong {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+}
+
+.loadingState, .emptyState {
+  text-align: center;
+  padding: 60px;
+  background: #ffffff;
+  border-radius: 12px;
+  color: var(--color-text-muted);
+}
+
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid var(--color-card-bg);
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--color-bg);
+  padding: 16px 20px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.table td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-bg);
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+}
+
+.totalCell {
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.detailBtn {
+  padding: 8px 14px;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-accent-gold);
+  border-radius: 6px;
+  color: var(--color-text-main);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.detailBtn:hover {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary);
+}
+
+/* ESTILOS DEL MODAL */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 550px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-bg);
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--color-text-muted);
+}
+
+.modalBody {
+  padding: 24px;
+}
+
+.infoGroup {
+  margin-bottom: 20px;
+  background: var(--color-bg);
+  padding: 14px;
+  border-radius: 8px;
+}
+
+.infoGroup p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+}
+
+.itemsDetailList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.detailCard {
+  background: #ffffff;
+  border: 1px solid var(--color-card-bg);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.detailCardHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.subDetail {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin: 2px 0;
+}
+
+@media (max-width: 700px) {
+  .dashboardPage,
+  .dashboardContainer {
+    padding: 24px 12px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .statsCard {
+    align-self: stretch;
+  }
+
+  .tableWrapper {
+    overflow-x: auto;
+  }
+
+  .table {
+    min-width: 620px;
+  }
+
+  .modalOverlay {
+    padding: 12px;
+  }
+
+  .modalHeader,
+  .modalBody {
+    padding: 16px;
+  }
+}
+
+
+.modalFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--color-bg);
+  padding-top: 16px;
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+/* SELECTOR Y CHIPS DE ESTADO */
+.statusSelect {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.statusInProcess {
+  background-color: #fff8e1;
+  color: #b78103;
+  border-color: #ffe082;
+}
+
+.statusConfirmed {
+  background-color: #e3f2fd;
+  color: #1565c0;
+  border-color: #90caf9;
+}
+
+.statusDelivered {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-color: #a5d6a7;
+}
+
+.statusCancelled {
+  background-color: #ffebee;
+  color: #c62828;
+  border-color: #ef9a9a;
+}
+
+.filtersBar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filtersBar input,
+.filtersBar select {
+  padding: 10px 12px;
+  border: 1px solid var(--color-card-bg);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.filtersBar input {
+  flex: 1;
+  min-width: 240px;
+}
+
+.notesField {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 18px 0;
+  color: var(--color-text-main);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.notesField textarea {
+  resize: vertical;
+  padding: 10px;
+  border: 1px solid var(--color-card-bg);
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 400;
+}

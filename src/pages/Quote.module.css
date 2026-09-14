@@ -1,0 +1,475 @@
+.quotePage {
+  padding: 5rem 5%;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+.emptyContainer {
+  padding: 10rem 5%;
+  text-align: center;
+  background-color: var(--color-bg);
+  min-height: 60vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.preTitle {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+/* LADO IZQUIERDO: PRODUCTOS */
+.itemCard {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(201, 169, 166, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  margin-bottom: 1.5rem;
+}
+
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.itemName {
+  font-size: 1.2rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.3rem;
+}
+
+.itemDetails {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #999;
+  font-size: 0.85rem;
+  transition: color 0.2s;
+}
+
+.deleteBtn:hover {
+  color: #e74c3c;
+}
+
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.optionGroup label, .addonsSection label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.optionGroup select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 20px;
+  background-color: #FDFDFD;
+  color: var(--color-text-main);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.addonsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.addonPill {
+  padding: 0.5rem 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 20px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.addonActive {
+  border-color: var(--color-primary);
+  background-color: rgba(201, 169, 166, 0.1);
+  color: var(--color-text-main);
+}
+
+.itemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #F0F0F0;
+  padding-top: 1.5rem;
+}
+
+.quantityControl {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.quantityControl button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid #E0E0E0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyValue {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.itemPrice {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text-main);
+}
+
+.clearBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: var(--color-accent-gold);
+  color: var(--color-text-main);
+}
+
+/* LADO DERECHO: FACTURA (INVOICE) */
+.summarySidebar {
+  position: sticky;
+  top: 120px;
+}
+
+.invoiceContainer {
+  background: #FFFFFF;
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 1px solid rgba(201, 169, 166, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1.5rem;
+}
+
+.invoiceHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--color-bg);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.invoiceLogo {
+  font-size: 1.5rem;
+  color: var(--color-text-main);
+  margin: 0;
+}
+
+.invoiceDate {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.invoiceTitle {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.invoiceCustomer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+
+.invoiceInput {
+  border: none;
+  border-bottom: 1px solid #E0E0E0;
+  padding: 0.5rem 0;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--color-text-main);
+  background: transparent;
+  outline: none;
+  resize: vertical;
+}
+
+.invoiceInput:focus {
+  border-bottom-color: var(--color-primary);
+}
+
+.invoiceItems {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.invoiceRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.invoiceItemInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.invoiceItemInfo strong {
+  color: var(--color-text-main);
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.invoiceItemInfo span {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.invoiceItemPrice {
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
+.invoiceTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid var(--color-bg);
+  padding-top: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--color-text-main);
+}
+
+.whatsappBtn {
+  width: 100%;
+  background-color: #25D366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  transition: background-color 0.2s;
+}
+
+.whatsappBtn:hover {
+  background-color: #20BA5A;
+}
+
+.customColorsBox {
+  margin: 1rem 0 1.5rem 0;
+  padding: 1rem;
+  background-color: var(--color-bg);
+  border-radius: 8px;
+  border: 1px dashed rgba(201, 169, 166, 0.5);
+}
+
+.customColorLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  margin-bottom: 0.8rem;
+}
+
+.customColorsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.colorChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.colorChip input {
+  cursor: pointer;
+}
+
+.colorChipActive {
+  border-color: var(--color-primary);
+  background-color: rgba(201, 169, 166, 0.15);
+  color: var(--color-text-main);
+  font-weight: 600;
+}
+
+.categoryBadge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.3rem;
+}
+
+.badgeEterna {
+  background-color: #fce4ec;
+  color: #c2185b;
+}
+
+.badgeNatural {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.badgeDetails {
+  background-color: rgba(255, 243, 224, 0.95);
+  color: #a15c00;
+  border: 1px solid rgba(161, 92, 0, 0.2);
+}
+
+@media (max-width: 900px) {
+  .quotePage {
+    padding: 3rem 1rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .summarySidebar {
+    position: static;
+  }
+}
+
+@media (max-width: 560px) {
+  .quotePage {
+    padding: 2rem 0.75rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .itemCard,
+  .invoiceContainer {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .itemHeader {
+    gap: 0.75rem;
+  }
+
+  .itemName {
+    font-size: 1rem;
+  }
+
+  .optionsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .addonsList {
+    gap: 0.5rem;
+  }
+
+  .addonPill {
+    width: 100%;
+    text-align: left;
+  }
+
+  .invoiceHeader,
+  .invoiceRow,
+  .invoiceTotal,
+  .itemFooter {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .invoiceItemInfo {
+    min-width: 0;
+    flex: 1 1 65%;
+  }
+
+  .invoiceInput {
+    max-width: 100%;
+  }
+}
+

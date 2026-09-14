@@ -1,0 +1,148 @@
+.section {
+  padding: 5rem 5% 6rem 5%;
+  background-color: var(--color-bg);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Encabezado */
+.header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.subtitle {
+  color: var(--color-primary);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Layout Principal (2 columnas) */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Contenedor de las tarjetas (Grid interno) */
+.cardsContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.fullWidthCard {
+  grid-column: 1 / -1; /* Ocupa las dos columnas del grid interno */
+}
+
+/* Diseño de la Tarjeta individual */
+.card {
+  background-color: #FFFFFF;
+  border-radius: 12px;
+  padding: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  height: 140px;
+  border: 1px solid rgba(201, 169, 166, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.iconCircle {
+  background-color: rgba(201, 169, 166, 0.15); /* Fondo rosado translúcido */
+  min-width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconCircle svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--color-primary);
+}
+
+.cardText h3 {
+  font-size: 1.05rem;
+  color: var(--color-text-main);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.cardText p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mapa de Google */
+.mapContainer {
+  width: 100%;
+  min-height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(201, 169, 166, 0.2);
+}
+
+@media (max-width: 800px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cardsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .fullWidthCard {
+    grid-column: auto;
+  }
+
+  .card {
+    height: auto;
+    min-height: 120px;
+    padding: 1.25rem;
+  }
+}
+
