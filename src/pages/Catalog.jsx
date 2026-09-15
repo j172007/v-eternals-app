@@ -16,7 +16,25 @@ export default function Catalog() {
   const [errorMessage, setErrorMessage] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todas');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const { addToQuote } = useQuote();
+
+  useEffect(() => {
+    if (!selectedProduct) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleEscape = (event) => {
+      if (event.key === 'Escape') setSelectedProduct(null);
+    };
+
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [selectedProduct]);
 
   // Carga de productos optimizada dentro del useEffect
   useEffect(() => {
@@ -115,7 +133,20 @@ export default function Catalog() {
                   : styles.badgeEterna;
 
               return (
-                <div key={product.id} className={styles.productCard}>
+                <article
+                  key={product.id}
+                  className={styles.productCard}
+                  onClick={() => setSelectedProduct(product)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setSelectedProduct(product);
+                    }
+                  }}
+                  role="button"
+                  tabIndex="0"
+                  aria-label={`Ver detalles de ${product.name}`}
+                >
                   <div className={styles.imageFrame}>
                     <img
                       src={product.image_url || product.image || 'https://via.placeholder.com/300?text=Sin+Imagen'}
@@ -141,7 +172,10 @@ export default function Catalog() {
 
                       <button
                         className={styles.addBtn}
-                        onClick={() => addToQuote(product)}
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          addToQuote(product);
+                        }}
                         title="Agregar a cotización"
                         aria-label={`Agregar ${product.name} a cotización`}
                       >
@@ -151,7 +185,7 @@ export default function Catalog() {
                       </button>
                     </div>
                   </div>
-                </div>
+                </article>
               );
             })
           ) : (
@@ -159,6 +193,54 @@ export default function Catalog() {
               No hay productos registrados o ninguno coincide con tu búsqueda.
             </div>
           )}
+        </div>
+      )}
+
+      {selectedProduct && (
+        <div className={styles.modalOverlay} onClick={() => setSelectedProduct(null)}>
+          <section
+            className={styles.productModal}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="product-modal-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              className={styles.closeModal}
+              onClick={() => setSelectedProduct(null)}
+              aria-label="Cerrar detalles del producto"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div className={styles.modalImageFrame}>
+              <img
+                src={selectedProduct.image_url || selectedProduct.image || 'https://via.placeholder.com/500?text=Sin+Imagen'}
+                alt={selectedProduct.name}
+                className={styles.modalImage}
+              />
+            </div>
+            <div className={styles.modalDetails}>
+              <span className={styles.modalCategory}>
+                {PRODUCT_CATEGORIES.find((item) => item.value === selectedProduct.category)?.label || selectedProduct.category || 'Eternas'}
+              </span>
+              <h2 id="product-modal-title">{selectedProduct.name}</h2>
+              <p>{selectedProduct.details || selectedProduct.description || 'Sin detalles disponibles.'}</p>
+              <strong className={styles.modalPrice}>
+                ${Number(selectedProduct.price).toLocaleString('es-CO')}
+              </strong>
+              <button
+                type="button"
+                className={styles.modalQuoteButton}
+                onClick={() => {
+                  addToQuote(selectedProduct);
+                  setSelectedProduct(null);
+                }}
+              >
+                Agregar a cotización
+              </button>
+            </div>
+          </section>
         </div>
       )}
     </div>
