@@ -399,49 +399,55 @@ export default function Quote() {
             <h3 className={styles.invoiceTitle}>Resumen de Cotización</h3>
             
             <div className={styles.invoiceCustomer}>
-              <input 
-                type="text" 
-                placeholder="Nombre completo" 
-                className={styles.invoiceInput} 
-                value={customerData.name} 
-                onChange={(e) => setCustomerData({...customerData, name: e.target.value})} 
+              <label className={styles.fieldLabel} htmlFor="quote-name">Nombre completo</label>
+              <input
+                id="quote-name"
+                type="text"
+                placeholder="Ej. Laura Gómez"
+                autoComplete="name"
+                className={styles.invoiceInput}
+                value={customerData.name}
+                onChange={(e) => setCustomerData({...customerData, name: e.target.value})}
               />
-              <input 
-                type="tel" 
-                placeholder="Teléfono / WhatsApp" 
-                className={styles.invoiceInput} 
-                value={customerData.phone} 
-                onChange={(e) => setCustomerData({...customerData, phone: e.target.value})} 
+              <label className={styles.fieldLabel} htmlFor="quote-phone">Teléfono / WhatsApp</label>
+              <input
+                id="quote-phone"
+                type="tel"
+                inputMode="tel"
+                placeholder="Ej. 300 123 4567"
+                autoComplete="tel"
+                className={styles.invoiceInput}
+                value={customerData.phone}
+                onChange={(e) => setCustomerData({...customerData, phone: e.target.value})}
               />
-              <input 
-                type="text" 
-                placeholder="Ocasión especial" 
-                className={styles.invoiceInput} 
-                value={customerData.occasion} 
-                onChange={(e) => setCustomerData({...customerData, occasion: e.target.value})} 
+              <label className={styles.fieldLabel} htmlFor="quote-occasion">Ocasión especial</label>
+              <input
+                id="quote-occasion"
+                type="text"
+                placeholder="Ej. Cumpleaños"
+                className={styles.invoiceInput}
+                value={customerData.occasion}
+                onChange={(e) => setCustomerData({...customerData, occasion: e.target.value})}
               />
+              <label className={styles.fieldLabel} htmlFor="quote-delivery-date">Fecha deseada de entrega</label>
               <div className={styles.dateInputWrapper}>
                 <input
+                  id="quote-delivery-date"
                   type="date"
                   min={getMinimumDeliveryDate()}
                   required
-                  placeholder="Fecha deseada"
                   className={styles.invoiceInput}
                   value={customerData.deliveryDate}
                   onChange={(e) => setCustomerData({...customerData, deliveryDate: e.target.value})}
-                  aria-label="Fecha deseada de entrega"
                 />
-                {!customerData.deliveryDate && (
-                  <span className={styles.datePlaceholder} aria-hidden="true">
-                    Fecha deseada
-                  </span>
-                )}
               </div>
-              <textarea 
-                placeholder="Notas adicionales..." 
-                className={styles.invoiceInput} 
-                value={customerData.notes} 
-                onChange={(e) => setCustomerData({...customerData, notes: e.target.value})} 
+              <label className={styles.fieldLabel} htmlFor="quote-notes">Notas adicionales</label>
+              <textarea
+                id="quote-notes"
+                placeholder="Indicaciones para tu pedido"
+                className={styles.invoiceInput}
+                value={customerData.notes}
+                onChange={(e) => setCustomerData({...customerData, notes: e.target.value})}
               />
             </div>
 

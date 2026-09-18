@@ -22,7 +22,13 @@ export default function ProductCarousel() {
           >
             {/* Contenedor de la Imagen */}
             <div className={styles.imageContainer}>
-              <img src={image.src} alt={index === 0 ? image.alt : ''} />
+              <img
+                src={image.src}
+                alt={index === 0 ? image.alt : ''}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchPriority={index === 0 ? 'high' : 'low'}
+              />
             </div>
 
             {/* Contenedor del Texto */}

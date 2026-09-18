@@ -242,12 +242,21 @@
   margin-bottom: 2rem;
 }
 
+.fieldLabel {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
 .invoiceInput {
+  width: 100%;
+  min-height: 44px;
   border: none;
   border-bottom: 1px solid #E0E0E0;
   padding: 0.5rem 0;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--color-text-main);
   background: transparent;
   outline: none;
@@ -263,18 +272,9 @@
   width: 100%;
 }
 
-.datePlaceholder {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  color: var(--color-text-muted);
-  font-size: 0.95rem;
-  pointer-events: none;
-}
-
 .invoiceInput:focus {
   border-bottom-color: var(--color-primary);
+  box-shadow: 0 2px 0 var(--color-primary);
 }
 
 .invoiceItems {
@@ -338,6 +338,11 @@
   justify-content: center;
   gap: 0.8rem;
   transition: background-color 0.2s;
+}
+
+.whatsappBtn:disabled {
+  cursor: wait;
+  opacity: 0.7;
 }
 
 .whatsappBtn:hover {
@@ -489,6 +494,22 @@
 
   .invoiceInput {
     max-width: 100%;
+  }
+
+  .summarySidebar {
+    padding-bottom: 76px;
+  }
+
+  .whatsappBtn {
+    position: fixed;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 12px;
+    z-index: 20;
+    width: auto;
+    min-height: 52px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.28);
   }
 }
 

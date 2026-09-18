@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAuth } from '../context/useAuth';
 import { useNavigate } from 'react-router-dom';
 import styles from './Auth.module.css';
+import Button from '../components/common/Button';
+import Input from '../components/common/Input';
 
 export default function Auth() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -42,28 +44,28 @@ export default function Auth() {
         {errorMsg && <div className={styles.errorBox}>{errorMsg}</div>}
 
         <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.fieldGroup}>
-            <label>Correo Electrónico</label>
-            <input
-              type="email"
-              placeholder="tu@email.com"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
+          <Input
+            label="Correo Electrónico"
+            name="email"
+            type="email"
+            placeholder="tu@email.com"
+            autoComplete="email"
+            required
+            value={formData.email}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+          />
 
-          <div className={styles.fieldGroup}>
-            <label>Contraseña</label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              required
-              minLength={6}
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-            />
-          </div>
+          <Input
+            label="Contraseña"
+            name="password"
+            type="password"
+            placeholder="••••••••"
+            autoComplete="current-password"
+            required
+            minLength={6}
+            value={formData.password}
+            onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+          />
 
           <button
             type="button"
@@ -73,9 +75,9 @@ export default function Auth() {
             ¿Olvidaste tu contraseña?
           </button>
 
-          <button type="submit" className={styles.submitBtn} disabled={loading}>
+          <Button type="submit" variant="dark" className={styles.submitBtn} disabled={loading}>
             {loading ? 'Cargando...' : 'Entrar'}
-          </button>
+          </Button>
         </form>
 
         <div className={styles.toggleBox}>

@@ -24,6 +24,8 @@ export default function AboutUs() {
             src="/Productos/ConejoEterno.jpeg" 
             alt="Detalle V_Eternals" 
             className={styles.image} 
+            loading="lazy"
+            decoding="async"
           />
         </div>
 

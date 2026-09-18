@@ -1,24 +1,12 @@
-export default function Input({
-    label,
-    type = "text",
-    name,
-    value,
-    onChange,
-    placeholder
-}) {
+import styles from './Input.module.css';
+
+export default function Input({ label, id, name, className = '', ...inputProps }) {
+    const inputId = id || name;
+
     return (
-        <div className="input-group">
-            {label && <label htmlFor={name}>{label}</label>}
-            <input
-                id={name}
-                type={type}
-                name={name}
-                value={value}
-                onChange={onChange}
-                placeholder={placeholder}
-                className="form-input"
-            >
-            </input>
+        <div className={styles.group}>
+            {label && <label htmlFor={inputId}>{label}</label>}
+            <input id={inputId} name={name} className={`${styles.input} ${className}`.trim()} {...inputProps} />
         </div>
     );
 }

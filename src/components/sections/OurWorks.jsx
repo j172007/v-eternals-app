@@ -34,7 +34,7 @@ export default function OurWorks() {
             className={`${styles.collageItem} ${styles[`item${index + 1}`] || ''}`}
             onClick={() => setSelectedImage(work)}
           >
-            <img src={work.image_url} alt={work.name} className={styles.image} />
+            <img src={work.image_url} alt={work.name} className={styles.image} loading="lazy" decoding="async" />
             <div className={styles.overlay}>
               <span className={styles.category}>{work.category || 'V_Eternals'}</span>
               <h3 className={styles.workTitle}>{work.name}</h3>
@@ -48,7 +48,7 @@ export default function OurWorks() {
         <div className={styles.lightbox} onClick={() => setSelectedImage(null)}>
           <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
             <button className={styles.closeBtn} onClick={() => setSelectedImage(null)}>✕</button>
-            <img src={selectedImage.image_url} alt={selectedImage.name} className={styles.lightboxImage} />
+            <img src={selectedImage.image_url} alt={selectedImage.name} className={styles.lightboxImage} decoding="async" />
             <div className={styles.lightboxDetails}>
               <span>{selectedImage.category || 'Diseño Exclusivo'}</span>
               <h3>{selectedImage.name}</h3>

@@ -19,7 +19,7 @@ export default function ProductCard({ product }) {
       </span>
 
       <div className={styles.imageContainer}>
-        <img src={product.image} alt={product.name} className={styles.image} />
+        <img src={product.image} alt={product.name} className={styles.image} loading="lazy" decoding="async" />
       </div>
       
       <div className={styles.infoBox}>

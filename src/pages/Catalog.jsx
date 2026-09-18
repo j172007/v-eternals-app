@@ -152,6 +152,8 @@ export default function Catalog() {
                       src={product.image_url || product.image || 'https://via.placeholder.com/300?text=Sin+Imagen'}
                       alt={product.name}
                       className={styles.productImage}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 

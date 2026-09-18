@@ -233,6 +233,8 @@ export default function AdminProducts() {
                 src={product.image || product.image_url || 'https://via.placeholder.com/150'}
                 alt={product.name}
                 className={styles.image}
+                loading="lazy"
+                decoding="async"
               />
               <div className={styles.cardBody}>
                 <span className={styles.category}>{product.category || 'General'}</span>

@@ -444,16 +444,23 @@
   .categoryTabs {
     width: 100%;
     gap: 8px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 4px 2px 8px;
+    scrollbar-width: thin;
   }
 
   .tabBtn {
-    flex: 1 1 calc(50% - 8px);
+    flex: 0 0 auto;
+    min-height: 44px;
     padding: 9px 10px;
     font-size: 0.8rem;
+    white-space: nowrap;
   }
 
   .productsGrid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
   }
 
@@ -463,11 +470,11 @@
   }
 
   .productName {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 
   .productDetails {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
   }
 
   .productPrice {
@@ -475,14 +482,14 @@
   }
 
   .addBtn {
-    width: 32px;
-    height: 32px;
-    flex-basis: 32px;
+    width: 44px;
+    height: 44px;
+    flex-basis: 44px;
   }
 
   .addBtn svg {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
   }
 
   .categoryBadge {
@@ -513,6 +520,13 @@
 
   .modalQuoteButton {
     width: 100%;
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 380px) {
+  .productsGrid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
