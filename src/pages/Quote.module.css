@@ -496,20 +496,8 @@
     max-width: 100%;
   }
 
-  .summarySidebar {
-    padding-bottom: 76px;
-  }
-
   .whatsappBtn {
-    position: fixed;
-    right: 12px;
-    bottom: calc(12px + env(safe-area-inset-bottom));
-    left: 12px;
-    z-index: 20;
-    width: auto;
     min-height: 52px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.28);
   }
 }
 
